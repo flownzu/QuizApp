@@ -40,6 +40,42 @@ public final class FragenKatalog {
                     "Das ist mein Urteil.",
                     "So soll es sein.",
                     1
+            ),
+            new Frage(
+                    "Wodurch wird Schneewittchen wieder \"wach\"?",
+                    "Bücher und Wörter",
+                    "Defillibrator",
+                    "Mund zu Mund Beatmung",
+                    "Schlag auf die Wange",
+                    "Diener stolpert mit ihrem Sarg",
+                    4
+            ),
+            new Frage(
+                    "Von welchem amerikanischen Autor stammt die \"Wüstenplanet\"-Reihe?",
+                    "Bücher und Wörter",
+                    "Douglas Adams",
+                    "Frank Herbert",
+                    "Michael Chrichton",
+                    "Stephen King",
+                    2
+            ),
+            new Frage(
+                    "Es ist nicht alles Gold, was ...?",
+                    "Bücher und Wörter",
+                    "wertvoll ist",
+                    "Bände spricht",
+                    "glänzt",
+                    "glitzert",
+                    3
+            ),
+            new Frage(
+                    "\"Ich bin ein Pfau unter Hühnern\", sagte ...?",
+                    "Bücher und Wörter",
+                    "Buddha",
+                    "Dao Li",
+                    "Konfuzius",
+                    "Chin Chang",
+                    4
             )
     );
 
@@ -64,6 +100,51 @@ public final class FragenKatalog {
                     "Paul VI",
                     "Johannes Paul II",
                     4
+            ),
+            new Frage(
+                    "Wie viele Jahre soll Methusalem laut Altem Testament gelebt haben?",
+                    "Glaube und Religion",
+                    "572",
+                    "969",
+                    "897",
+                    "799",
+                    2
+            ),
+            new Frage(
+                    "Die Ikonoklasten zerstörten heilige Bilder und Denkmäler...?",
+                    "Glaube und Religion",
+                    "der eigenen Religion",
+                    "anderer Religionen",
+                    "des Islams",
+                    "der polytheistischen Religionen",
+                    1
+            ),
+            new Frage(
+                    "Welcher Heilige gilt als als Patron der Reisenden und des Verkehrs?",
+                    "Glaube und Religion",
+                    "Valentin",
+                    "Petrus",
+                    "Christophorus",
+                    "Barbara",
+                    3
+            ),
+            new Frage(
+                    "Papst Johannes Paul I. stammte aus?",
+                    "Glaube und Religion",
+                    "Italien",
+                    "Ungarn",
+                    "Rumänien",
+                    "Polen",
+                    1
+            ),
+            new Frage(
+                    "Welche Philosophie behauptet, dass die Frage zur Existenz eines Gottes nicht endgültig zu klären sei?",
+                    "Glaube und Religion",
+                    "Agnostizismus",
+                    "Atheismus",
+                    "Theismus",
+                    "Nihilismus",
+                    1
             )
     );
 
@@ -76,6 +157,51 @@ public final class FragenKatalog {
                     "USA",
                     "Kanada",
                     2
+            ),
+            new Frage(
+                    "Wie heißt der erste Columbo Film aus dem Jahr 1968?",
+                    "Medien und Unterhaltung",
+                    "Mord nach Rezept",
+                    "Peng du bist tot",
+                    "Bei Anruf Mord",
+                    "Schach dem Mörder",
+                    1
+            ),
+            new Frage(
+                    "Welche Schauspielerin nahm nicht den Namen des Vaters an?",
+                    "Medien und Unterhaltung",
+                    "Liza Minelli",
+                    "Romy Schneider",
+                    "Carri Fisher",
+                    "Melanie Griffith",
+                    2
+            ),
+            new Frage(
+                    "Welche Farbe hat Oskar aus der Sesamstraße?",
+                    "Medien und Unterhaltung",
+                    "Blau",
+                    "Grün",
+                    "Gelb",
+                    "Braun",
+                    2
+            ),
+            new Frage(
+                    "Wer ist kein Feind von Batman?",
+                    "Medien und Unterhaltung",
+                    "Pinguin",
+                    "Lex Luthor",
+                    "Riddler",
+                    "Two Face",
+                    2
+            ),
+            new Frage(
+                    "Wie viele Oscars erhilt das Epos \"Lawrence von Arabien\"?",
+                    "Medien und Unterhaltung",
+                    "3",
+                    "10",
+                    "5",
+                    "7",
+                    4
             )
     );
 
@@ -88,6 +214,60 @@ public final class FragenKatalog {
                     "Fliese",
                     "Walle",
                     2
+            ),
+            new Frage(
+                    "In dem musikalischen Märchen \"Peter und der Wolf\" ist jede Person und jedes Tier der Handlung einem eigenen Instrument zugeordnet. Welches Instrument steht für den Großvater?",
+                    "Musik",
+                    "Fagott",
+                    "Klavier",
+                    "Kontrabass",
+                    "Trompete",
+                    1
+            ),
+            new Frage(
+                    "In welchem Takt wird ein Bolero gespielt?",
+                    "Musik",
+                    "3/4",
+                    "6/8",
+                    "5/8",
+                    "4/4",
+                    1
+            ),
+            new Frage(
+                    "Aus welchem Land stammt die Rumba ursprünglich?",
+                    "Musik",
+                    "Mexiko",
+                    "Argentinien",
+                    "Brasilien",
+                    "Kuba",
+                    4
+            ),
+            new Frage(
+                    "Wer war der goldene Reiter?",
+                    "Musik",
+                    "Joachim Witt",
+                    "Markus",
+                    "Herbert Grönemeier",
+                    "Reinhard Fendrich",
+                    1
+            ),
+            new Frage(
+                    "Wer sand das Original \"Major Tom\"?",
+                    "Musik",
+                    "Falco",
+                    "Joachim Witt",
+                    "Peter Schilling",
+                    "Nena",
+                    3
+            ),
+            new Frage(
+                    "Welchen Titel trägt die Nationalhymne der USA?",
+                    "Musik",
+                    "Stars and Stripes",
+                    "Living in America",
+                    "Amazing Grace",
+                    "The Star Spangled Banner",
+                    4
             )
     );
 
@@ -100,6 +280,69 @@ public final class FragenKatalog {
                     "5",
                     "10",
                     1
+            ),
+            new Frage(
+                    "Wie heißt die japanische Kampfsportart, bei der Bambusschwerter zum Einsatz kommen?",
+                    "Sport und Freizeit",
+                    "Naginatado",
+                    "Jiu Jutsu",
+                    "Kyudo",
+                    "Kendo",
+                    4
+            ),
+            new Frage(
+                    "Bei welcher Sportart besteht der Ball aus Elch- oder Rosshaar?",
+                    "Sport und Freizeit",
+                    "Polo",
+                    "Prellball",
+                    "Radball",
+                    "Völkerball",
+                    3
+            ),
+            new Frage(
+                    "Welche Sportart wird auf einer Straße ausgeübt?",
+                    "Sport und Freizeit",
+                    "Bandy",
+                    "Boccia",
+                    "Boßeln",
+                    "Bootschen",
+                    3
+            ),
+            new Frage(
+                    "Wie lautete der Spitzname von Helmut Rahn?",
+                    "Sport und Freizeit",
+                    "Major",
+                    "Boss",
+                    "Eisenfuß",
+                    "Chef",
+                    2
+            ),
+            new Frage(
+                    "Wie endete das einzige Fußballspiel zwischen der Bundesrepublik Deutschland und der DDR?",
+                    "Sport und Freizeit",
+                    "1:2",
+                    "2:1",
+                    "0:1",
+                    "1:0",
+                    3
+            ),
+            new Frage(
+                    "Bei welchem Sport gibt es ein \"Sandwich\"?",
+                    "Sport und Freizeit",
+                    "Basketball",
+                    "Polo",
+                    "Volleyball",
+                    "Eishockey",
+                    2
+            ),
+            new Frage(
+                    "In welchem Jahr wurde die Bundesrepublik Deutschland zum ersten Mal Handball-Weltmeister?",
+                    "Sport und Freizeit",
+                    "2003",
+                    "1990",
+                    "1978",
+                    "2007",
+                    3
             )
     );
 
@@ -255,13 +498,13 @@ public final class FragenKatalog {
 
     public static List<Frage> alleFragen = new ArrayList<Frage>(){
         {
-            //addAll(buecherUndWoerter);
-            //addAll(geschichte);
-            //addAll(kunstUndKultur);
-            //addAll(glaubeUndReligion);
+            addAll(buecherUndWoerter);
+            addAll(geschichte);
+            addAll(kunstUndKultur);
+            addAll(glaubeUndReligion);
             addAll(medienUndUnterhaltung);
-            //addAll(musik);
-            //addAll(geographieUndErdkunde);
+            addAll(musik);
+            addAll(geographieUndErdkunde);
             addAll(sportUndFreizeit);
             Collections.shuffle(this);
         }

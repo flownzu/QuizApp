@@ -6,6 +6,7 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onResume();
         if  (ende){
             ende = false;
+            updateScore(0);
+            Collections.shuffle(FragenKatalog.alleFragen);
             bindFrage(FragenKatalog.alleFragen.get(fragenIndex).shuffleAntworten());
         }
     }
@@ -65,6 +68,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             progressBarProgressAnimator.cancel();
             progressBarProgressColorAnimator.cancel();
         }
+    }
+
+    @Override
+    public void onMultiWindowModeChanged(boolean isInMultiWindowMode, Configuration newConfig) {
+        super.onMultiWindowModeChanged(isInMultiWindowMode, newConfig);
     }
 
     private void setupProgressBar(){
@@ -245,8 +253,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(this, EndeActivity.class);
             intent.putExtra("score", score);
             startActivity(intent);
-            updateScore(0);
-            Collections.shuffle(FragenKatalog.alleFragen);
             ende = true;
         }
         else bindFrage(FragenKatalog.alleFragen.get(fragenIndex).shuffleAntworten());

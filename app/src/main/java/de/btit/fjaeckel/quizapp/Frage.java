@@ -35,10 +35,6 @@ public class Frage {
         return kategorie;
     }
 
-    public void setKategorie(String kategorie) {
-        this.kategorie = kategorie;
-    }
-
     public String getAntwort1() {
         return antwort1;
     }
