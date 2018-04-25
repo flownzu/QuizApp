@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onResume();
         if  (ende){
             ende = false;
-            progressBarProgressAnimator.start();
-            progressBarProgressColorAnimator.start();
+            bindFrage(FragenKatalog.alleFragen.get(fragenIndex).shuffleAntworten());
         }
     }
 
@@ -70,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setupProgressBar(){
         final ProgressBar pb = findViewById(R.id.progressBarTimer);
-        pb.setMax(115000);
-        progressBarProgressAnimator = ObjectAnimator.ofInt(pb, "progress", 115000, 0);
+        pb.setMax(65000);
+        progressBarProgressAnimator = ObjectAnimator.ofInt(pb, "progress", 65000, 0);
         progressBarProgressAnimator.setDuration(20000);
         progressBarProgressAnimator.addListener(new Animator.AnimatorListener() {
             @Override
@@ -174,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
             richtigAnimation.start();
-            updateScore(score + (Math.min((int)progressBarProgressAnimator.getAnimatedValue() / 1000, 100)));
+            updateScore(score + (Math.min(((int)progressBarProgressAnimator.getAnimatedValue() + 50000) / 1000, 100)));
         }
         else{
             final Button richtigerButton = antwortButton[frage.getRichtig() - 1];
@@ -225,6 +224,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void bindFrage(Frage f){
         frage = f;
+        buttonAntwort1.setEnabled(true);
+        buttonAntwort2.setEnabled(true);
+        buttonAntwort3.setEnabled(true);
+        buttonAntwort4.setEnabled(true);
         buttonFrage.setText(frage.getText());
         buttonAntwort1.setText(frage.getAntwort1());
         buttonAntwort2.setText(frage.getAntwort2());
@@ -237,10 +240,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void nextFrage(){
         fragenIndex++;
-        buttonAntwort1.setEnabled(true);
-        buttonAntwort2.setEnabled(true);
-        buttonAntwort3.setEnabled(true);
-        buttonAntwort4.setEnabled(true);
         if (fragenIndex >= FragenKatalog.alleFragen.size()){
             fragenIndex = 0;
             Intent intent = new Intent(this, EndeActivity.class);
@@ -250,6 +249,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Collections.shuffle(FragenKatalog.alleFragen);
             ende = true;
         }
-        bindFrage(FragenKatalog.alleFragen.get(fragenIndex).shuffleAntworten());
+        else bindFrage(FragenKatalog.alleFragen.get(fragenIndex).shuffleAntworten());
     }
 }
