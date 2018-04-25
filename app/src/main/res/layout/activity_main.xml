@@ -8,31 +8,30 @@
 
     <Button
         android:id="@+id/buttonFrage"
-        android:layout_width="354dp"
-        android:layout_height="188dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintBottom_toBottomOf="@+id/guideline45pcHorizontal"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline5pcLeft"
+        app:layout_constraintRight_toRightOf="@+id/guideline5pcRight"
+        app:layout_constraintTop_toTopOf="@+id/guideline4pcTop" />
 
     <Button
         android:id="@+id/buttonAntwort1"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:onClick="onClick"
+        app:layout_constraintBottom_toTopOf="@+id/guideline70pcHorizontal"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent=".25"
         app:layout_constraintLeft_toLeftOf="@+id/buttonFrage"
-        app:layout_constraintRight_toRightOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/buttonFrage" />
+        app:layout_constraintRight_toRightOf="@+id/guidelineVertical" />
 
     <Button
         android:id="@+id/buttonAntwort3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintHeight_default="percent"
+        android:onClick="onClick"
         app:layout_constraintHeight_percent=".25"
         app:layout_constraintLeft_toLeftOf="@+id/buttonFrage"
         app:layout_constraintRight_toRightOf="@+id/buttonAntwort1"
@@ -42,26 +41,82 @@
         android:id="@+id/buttonAntwort2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="@+id/buttonAntwort1"
-        app:layout_constraintLeft_toRightOf="@+id/guideline"
+        app:layout_constraintLeft_toRightOf="@+id/guidelineVertical"
         app:layout_constraintRight_toRightOf="@+id/buttonFrage"
-        app:layout_constraintTop_toBottomOf="@+id/buttonFrage" />
+        app:layout_constraintTop_toTopOf="@+id/buttonAntwort1" />
 
     <Button
         android:id="@+id/buttonAntwort4"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="@+id/buttonAntwort3"
         app:layout_constraintLeft_toLeftOf="@+id/buttonAntwort2"
         app:layout_constraintRight_toRightOf="@+id/buttonFrage"
         app:layout_constraintTop_toBottomOf="@+id/buttonAntwort2" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/guidelineVertical"
         android:layout_width="1dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp"
         app:layout_constraintGuide_percent=".5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline5pcLeft"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".05" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline5pcRight"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".95" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline45pcHorizontal"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline4pcTop"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".04" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline70pcHorizontal"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.71" />
+
+    <TextView
+        android:id="@+id/textViewScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/score"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline5pcLeft"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAntwort3" />
+
+    <ProgressBar
+        android:id="@+id/progressBarTimer"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAntwort1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5pcRight"
+        app:layout_constraintStart_toStartOf="@+id/guideline5pcLeft"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFrage" />
 
 </android.support.constraint.ConstraintLayout>

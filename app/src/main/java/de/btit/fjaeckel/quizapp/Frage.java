@@ -1,5 +1,9 @@
 package de.btit.fjaeckel.quizapp;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class Frage {
     private String text;
     private String kategorie;
@@ -9,7 +13,7 @@ public class Frage {
     private String antwort4;
     private int richtig;
 
-    public Frage(String text, String kategorie, String antwort1, String antwort2, String antwort3, String antwort4, int richtig) {
+    Frage(String text, String kategorie, String antwort1, String antwort2, String antwort3, String antwort4, int richtig) {
         this.text = text;
         this.kategorie = kategorie;
         this.antwort1 = antwort1;
@@ -73,5 +77,31 @@ public class Frage {
 
     public void setRichtig(int richtig) {
         this.richtig = richtig;
+    }
+
+    public Frage shuffleAntworten(){
+        String richtigeAntwort = "";
+        switch (getRichtig()){
+            case 1:
+                richtigeAntwort = getAntwort1();
+                break;
+            case 2:
+                richtigeAntwort = getAntwort2();
+                break;
+            case 3:
+                richtigeAntwort = getAntwort3();
+                break;
+            case 4:
+                richtigeAntwort = getAntwort4();
+                break;
+        }
+        List<String> antworten = Arrays.asList(getAntwort1(), getAntwort2(), getAntwort3(), getAntwort4());
+        Collections.shuffle(antworten);
+        setAntwort1(antworten.get(0));
+        setAntwort2(antworten.get(1));
+        setAntwort3(antworten.get(2));
+        setAntwort4(antworten.get(3));
+        setRichtig(antworten.indexOf(richtigeAntwort) + 1);
+        return this;
     }
 }
