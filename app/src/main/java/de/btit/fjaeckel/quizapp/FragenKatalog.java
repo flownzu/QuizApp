@@ -88,6 +88,15 @@ public final class FragenKatalog {
                     "Leonardo da Vinci",
                     "Claude Monet",
                     3
+            ),
+            new Frage(
+                    "Welcher dieser Malter gehört nicht zum Impressionismus?",
+                    "Kunst & Kultur",
+                    "Monet",
+                    "Brueghel",
+                    "Renoir",
+                    "Cezanne",
+                    2
             )
     );
 
@@ -252,7 +261,7 @@ public final class FragenKatalog {
                     1
             ),
             new Frage(
-                    "Wer sand das Original \"Major Tom\"?",
+                    "Wer sang das Original \"Major Tom\"?",
                     "Musik",
                     "Falco",
                     "Joachim Witt",
