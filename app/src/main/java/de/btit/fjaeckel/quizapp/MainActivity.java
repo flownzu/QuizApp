@@ -77,8 +77,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setupProgressBar(){
         final ProgressBar pb = findViewById(R.id.progressBarTimer);
+        // Setze die Progressbar Value auf 65000 damit der Ablauf sehr smooth ist - außerdem lässt sich so gut durch die abgelaufene Zeit in ms eine Punktzahl ausrechnen
         pb.setMax(65000);
         progressBarProgressAnimator = ObjectAnimator.ofInt(pb, "progress", 65000, 0);
+        // 20 Sekunden Zeit für eine Frage
         progressBarProgressAnimator.setDuration(20000);
         progressBarProgressAnimator.addListener(new Animator.AnimatorListener() {
             @Override
@@ -88,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onAnimationEnd(Animator animation) {
+                // Falls die Frage nicht beantwortet wurde und das Spiel noch nicht vorbei ist soll die Frage als falsch beantwortet werden
                 if (!beantwortet && !ende) beantworteFrage(false, null);
             }
 
@@ -105,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressBarProgressColorAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
+                // Lasse die Farbe des Progress von Grün zu Rot wandern je mehr Zeit verschreitet
                 pb.getProgressDrawable().setColorFilter((int)animation.getAnimatedValue(), PorterDuff.Mode.MULTIPLY);
             }
         });
@@ -143,12 +147,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void beantworteFrage(boolean erfolg, View v){
+        // Wenn eine Frage beantwortet wird sollen erstmal alle antwort Buttons nicht mehr enabled sein sodass man nicht mehrere Antworten hintereinander drücken kann
         buttonAntwort1.setEnabled(false);
         buttonAntwort2.setEnabled(false);
         buttonAntwort3.setEnabled(false);
         buttonAntwort4.setEnabled(false);
+        // Rufe die herkömmliche Farbe des Buttons ab
         int colorFrom = getResources().getColor(R.color.colorButtonNormal);
         ValueAnimator richtigAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, Color.GREEN, colorFrom);
+        // Eine Animation = 350ms, je schneller desto stärker ist der Blinkeffekt
+        // insgesamt 5 mal abspielen
         richtigAnimation.setDuration(350);
         richtigAnimation.setRepeatCount(5);
         if (erfolg) {
@@ -156,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             richtigAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
+                    // animiere die Farbe des Button Background von normal zu grün und wieder zu normal -> Blinkeffekt
                     antwortButton.getBackground().setColorFilter((int)animation.getAnimatedValue(), PorterDuff.Mode.MULTIPLY);
                 }
             });
@@ -167,6 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 @Override
                 public void onAnimationEnd(Animator animation) {
+                    // Bei Ende der Animation soll direkt die nächste Frage angezeigt werden
                     nextFrage();
                 }
 
@@ -181,9 +191,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
             richtigAnimation.start();
+            // Update die Score mit dem ProgressBar Fortschritt, dabei soll 50 der Minimalwert sein und es gibt eine anfängliche Toleranz von 3s bei der die volle Punktzahl von 100 erreicht wird
+            // 65000+50000 = 115000 / 1000 = 115, 20sek Animation -> 20 * 0.15 = 3s
             updateScore(score + (Math.min(((int)progressBarProgressAnimator.getAnimatedValue() + 50000) / 1000, 100)));
         }
         else{
+            // Bei einer falschen Animation sollen zwei Button animiert werden
             final Button richtigerButton = antwortButton[frage.getRichtig() - 1];
             final Button falscherButton = (Button)v;
             richtigAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -198,6 +211,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             falschAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
+                    // Animiere nur den falschen Button falls dieser wirklich geklickt wird
                     if (falscherButton != null) {
                         falscherButton.getBackground().setColorFilter((int) animation.getAnimatedValue(), PorterDuff.Mode.MULTIPLY);
                     }
