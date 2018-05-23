@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -17,6 +18,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.Collections;
+
+import de.btit.fjaeckel.quizapp.db.QuizDatabase;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button buttonFrage;
@@ -33,9 +36,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean beantwortet;
     private boolean ende;
 
+    public static QuizDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = Room.databaseBuilder(getApplicationContext(), QuizDatabase.class, "QuizDB").allowMainThreadQueries().build();
         setContentView(R.layout.activity_main);
         buttonFrage = findViewById(R.id.buttonFrage);
         buttonAntwort1 = findViewById(R.id.buttonAntwort1);
@@ -262,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void nextFrage(){
         fragenIndex++;
-        if (fragenIndex >= FragenKatalog.alleFragen.size()){
+        if (fragenIndex >= Math.min(FragenKatalog.alleFragen.size(), 10)) {
             fragenIndex = 0;
             Intent intent = new Intent(this, EndeActivity.class);
             intent.putExtra("score", score);
