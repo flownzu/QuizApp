@@ -5,13 +5,13 @@ import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -23,7 +23,7 @@ import java.util.List;
 import de.btit.fjaeckel.quizapp.db.Frage;
 import de.btit.fjaeckel.quizapp.db.QuizDatabase;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener {
     private Button buttonFrage;
     private Button buttonAntwort1;
     private Button buttonAntwort2;

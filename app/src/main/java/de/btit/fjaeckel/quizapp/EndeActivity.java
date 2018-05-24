@@ -1,13 +1,13 @@
 package de.btit.fjaeckel.quizapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import de.btit.fjaeckel.quizapp.db.Highscore;
 
-public class EndeActivity extends AppCompatActivity {
+public class EndeActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
