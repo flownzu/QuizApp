@@ -18,7 +18,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.Collections;
+import java.util.List;
 
+import de.btit.fjaeckel.quizapp.db.Frage;
 import de.btit.fjaeckel.quizapp.db.QuizDatabase;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonAntwort4;
     private Button[] antwortButton;
     private int fragenIndex = -1;
-    private Frage frage;
+    private List<Frage> fragenListe;
     private int score = 0;
     private ObjectAnimator progressBarProgressAnimator;
     private ValueAnimator progressBarProgressColorAnimator;
@@ -41,7 +43,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = Room.databaseBuilder(getApplicationContext(), QuizDatabase.class, "QuizDB").allowMainThreadQueries().build();
+        db = Room.databaseBuilder(getApplicationContext(), QuizDatabase.class, "QuizDB").fallbackToDestructiveMigration().build();
+        try {
+            Thread t = new Thread(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            for (Frage f : FragenKatalog.alleFragen){
+                                if (!db.frageDao().exists(f.getText())) db.frageDao().insert(f);
+                                else db.frageDao().update(f);
+                            }
+                            fragenListe = db.frageDao().getFragen(10);
+                        }
+                    }
+            );
+            t.start();
+            t.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         setContentView(R.layout.activity_main);
         buttonFrage = findViewById(R.id.buttonFrage);
         buttonAntwort1 = findViewById(R.id.buttonAntwort1);
@@ -136,16 +156,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             progressBarProgressColorAnimator.cancel();
             switch(v.getId()){
                 case R.id.buttonAntwort1:
-                    erfolg = frage.getRichtig() == 1;
+                    erfolg = fragenListe.get(fragenIndex).getRichtig() == 1;
                     break;
                 case R.id.buttonAntwort2:
-                    erfolg = frage.getRichtig() == 2;
+                    erfolg = fragenListe.get(fragenIndex).getRichtig() == 2;
                     break;
                 case R.id.buttonAntwort3:
-                    erfolg = frage.getRichtig() == 3;
+                    erfolg = fragenListe.get(fragenIndex).getRichtig() == 3;
                     break;
                 case R.id.buttonAntwort4:
-                    erfolg = frage.getRichtig() == 4;
+                    erfolg = fragenListe.get(fragenIndex).getRichtig() == 4;
                     break;
             }
             beantworteFrage(erfolg, v);
@@ -203,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else{
             // Bei einer falschen Animation sollen zwei Button animiert werden
-            final Button richtigerButton = antwortButton[frage.getRichtig() - 1];
+            final Button richtigerButton = antwortButton[fragenListe.get(fragenIndex).getRichtig() - 1];
             final Button falscherButton = (Button)v;
             richtigAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
@@ -251,16 +271,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void bindFrage(Frage f){
-        frage = f;
         buttonAntwort1.setEnabled(true);
         buttonAntwort2.setEnabled(true);
         buttonAntwort3.setEnabled(true);
         buttonAntwort4.setEnabled(true);
-        buttonFrage.setText(frage.getText());
-        buttonAntwort1.setText(frage.getAntwort1());
-        buttonAntwort2.setText(frage.getAntwort2());
-        buttonAntwort3.setText(frage.getAntwort3());
-        buttonAntwort4.setText(frage.getAntwort4());
+        buttonFrage.setText(f.getText());
+        buttonAntwort1.setText(f.getAntwort1());
+        buttonAntwort2.setText(f.getAntwort2());
+        buttonAntwort3.setText(f.getAntwort3());
+        buttonAntwort4.setText(f.getAntwort4());
         progressBarProgressAnimator.start();
         progressBarProgressColorAnimator.start();
         beantwortet = false;
@@ -268,13 +287,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void nextFrage(){
         fragenIndex++;
-        if (fragenIndex >= Math.min(FragenKatalog.alleFragen.size(), 10)) {
+        if (fragenIndex >= fragenListe.size()) {
             fragenIndex = 0;
             Intent intent = new Intent(this, EndeActivity.class);
             intent.putExtra("score", score);
             startActivity(intent);
             ende = true;
         }
-        else bindFrage(FragenKatalog.alleFragen.get(fragenIndex).shuffleAntworten());
+        else bindFrage(fragenListe.get(fragenIndex).shuffleAntworten());
     }
 }

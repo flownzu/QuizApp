@@ -5,32 +5,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import de.btit.fjaeckel.quizapp.db.Frage;
+
 public final class FragenKatalog {
-
-    public static List<Frage> getFragen(int count){
-        List<Frage> fragen = alleFragen;
-        if (count > fragen.size()) throw new IndexOutOfBoundsException();
-        if (count <= 0) throw new IllegalArgumentException("Es muss mindestens eine Frage zurückgegeben werden.");
-        return fragen.subList(0, count - 1);
-    }
-
-    public static List<Frage> getFragen(final String kategorie){
-        List<Frage> kategorieFragen = Collections.emptyList();
-        for (Frage f : alleFragen){
-            if (f.getKategorie().equals(kategorie)) kategorieFragen.add(f.shuffleAntworten());
-        }
-        return kategorieFragen;
-    }
-
-    public static List<Frage> getFragen(String kategorie, int count){
-        if (count <= 0) throw new IllegalArgumentException("Es muss mindestens eine Frage zurückgegeben werden.");
-        List<Frage> kategorieFragen = getFragen(kategorie);
-        if (kategorieFragen.size() >= count){
-            return kategorieFragen.subList(0, count - 1);
-        }
-        else throw new IndexOutOfBoundsException();
-    }
-
     private static  List<Frage> buecherUndWoerter = Arrays.asList(
             new Frage(
                     "Was bedeuten die berühmten Worte von Julius Caesar \"Alea iacta est\"?",

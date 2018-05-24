@@ -5,6 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "Highscores", indices = { @Index("id"), @Index("score")})
 public class Highscore {
@@ -19,12 +20,15 @@ public class Highscore {
         this(0, name, score);
     }
 
+    @NonNull
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    @NonNull
     @ColumnInfo(name = "name")
     private String name;
 
+    @NonNull
     @ColumnInfo(name = "score")
     private int score;
 
