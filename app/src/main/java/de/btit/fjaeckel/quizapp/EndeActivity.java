@@ -20,7 +20,7 @@ public class EndeActivity extends Activity {
                 new Runnable() {
                     @Override
                     public void run() {
-                        MainActivity.db.highscoreDao().insert(new Highscore("Florian", intent.getIntExtra("score", 0)));
+                        MenuActivity.db.highscoreDao().insert(new Highscore("Florian", intent.getIntExtra("score", 0)));
                     }
                 }
         ).start();

@@ -40,11 +40,12 @@ public class Highscore {
         this.id = id;
     }
 
+    @NonNull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 
@@ -54,5 +55,10 @@ public class Highscore {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @Override
+    public String toString(){
+        return getName() + " - " + getScore();
     }
 }

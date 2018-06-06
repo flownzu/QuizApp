@@ -3,4 +3,8 @@
     <string name="score">Score: %1$d</string>
     <string name="title_activity_ende">Ende</string>
     <string name="final_score">Sie haben %1$d Punkte erreicht!</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="play">Spielen</string>
+    <string name="highscores">Highscores</string>
+    <string name="title_activity_highscore">HighscoreActivity</string>
 </resources>

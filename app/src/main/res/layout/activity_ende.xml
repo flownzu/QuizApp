@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:text="@string/final_score"
         android:textAllCaps="true"
         android:textColor="?android:attr/colorForeground"
@@ -24,6 +24,7 @@
         app:layout_constraintHorizontal_weight="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="0.5" />
+        app:layout_constraintVertical_bias=".25"
+        app:layout_constraintVertical_weight=".25" />
 
 </android.support.constraint.ConstraintLayout>
