@@ -7,6 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".EndeActivity">
 
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:editable="true"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:textAllCaps="true"
+        android:textColor="?android:attr/colorForeground"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_weight="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.625"
+        app:layout_constraintVertical_weight=".5" />
+
     <TextView
         android:id="@+id/textViewFinalScore"
         android:layout_width="wrap_content"
@@ -24,7 +47,40 @@
         app:layout_constraintHorizontal_weight="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".25"
+        app:layout_constraintVertical_bias="0.25"
         app:layout_constraintVertical_weight=".25" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:text="Name: "
+        android:textAllCaps="true"
+        android:textColor="?android:attr/colorForeground"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintVertical_weight=".5" />
+
+    <Button
+        android:id="@+id/buttonHighscoreSpeichern"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="25dp"
+        android:onClick="speichereHighscore"
+        android:text="Highscore Speichern"
+        android:textSize="24sp"
+        app:layout_constraintHeight_percent=".15"
+        app:layout_constraintLeft_toLeftOf="@+id/textViewFinalScore"
+        app:layout_constraintRight_toRightOf="@+id/textViewFinalScore"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
 </android.support.constraint.ConstraintLayout>
