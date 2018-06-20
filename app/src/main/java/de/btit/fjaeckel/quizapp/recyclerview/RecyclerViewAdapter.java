@@ -1,6 +1,7 @@
 package de.btit.fjaeckel.quizapp.recyclerview;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,15 +31,16 @@ public class RecyclerViewAdapter extends android.support.v7.widget.RecyclerView.
         }
     }
 
+    @NonNull
     @Override
-    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         view1 = LayoutInflater.from(context).inflate(R.layout.recyclerview_items, parent, false);
         viewHolder1 = new ViewHolder(view1);
         return viewHolder1;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position){
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position){
         holder.textView.setText(items[position]);
     }
 

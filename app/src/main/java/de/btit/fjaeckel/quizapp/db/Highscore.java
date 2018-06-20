@@ -9,7 +9,7 @@ import android.support.annotation.NonNull;
 
 @Entity(tableName = "Highscores", indices = { @Index("id"), @Index("score")})
 public class Highscore {
-    public Highscore(int id, String name, int score) {
+    public Highscore(int id, @NonNull String name, int score) {
         this.id = id;
         this.name = name;
         this.score = score;
@@ -20,7 +20,6 @@ public class Highscore {
         this(0, name, score);
     }
 
-    @NonNull
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -28,7 +27,6 @@ public class Highscore {
     @ColumnInfo(name = "name")
     private String name;
 
-    @NonNull
     @ColumnInfo(name = "score")
     private int score;
 

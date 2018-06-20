@@ -17,10 +17,6 @@ public class HighscoreActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
-        /*Intent menuIntent = new Intent(this, MenuActivity.class);
-        PendingIntent pendingIntent = TaskStackBuilder.create(this).addNextIntentWithParentStack(menuIntent).getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-        builder.setContentIntent(pendingIntent);*/
         new Thread(
                 new Runnable() {
                     @Override

@@ -22,14 +22,14 @@ public class EndeActivity extends Activity {
                 new InputFilter() {
                     @Override
                     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                        String filtered = "";
+                        StringBuilder filtered = new StringBuilder();
                         for (int i = start; i < end; i++) {
                             char character = source.charAt(i);
                             if (!Character.isWhitespace(character)) {
-                                filtered += character;
+                                filtered.append(character);
                             }
                         }
-                        return filtered;
+                        return filtered.toString();
                     }
                 }
         });

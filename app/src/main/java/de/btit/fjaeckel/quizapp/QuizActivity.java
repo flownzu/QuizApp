@@ -52,7 +52,7 @@ public class QuizActivity extends Activity implements View.OnClickListener {
             t.start();
             t.join();
         }
-        catch (InterruptedException e){}
+        catch (InterruptedException ignored){}
         buttonFrage = findViewById(R.id.buttonFrage);
         buttonAntwort1 = findViewById(R.id.buttonAntwort1);
         buttonAntwort1 = findViewById(R.id.buttonAntwort1);
